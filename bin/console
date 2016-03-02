@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "rails"
+require "inpost_points_finder"
+require "irb"
+IRB.start
