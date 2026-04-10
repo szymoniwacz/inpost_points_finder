@@ -1,10 +1,12 @@
 # InpostPointsFinder
 
-This gem allows to search for InPost delivery points.
+> Simple Ruby gem for searching InPost delivery points via public API.
+
+---
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add to your application's Gemfile:
 
 ```ruby
 gem 'inpost_points_finder'
@@ -12,58 +14,101 @@ gem 'inpost_points_finder'
 
 And then execute:
 
-    $ bundle
+```sh
+bundle
+```
 
-Or install it yourself as:
+Or install directly:
 
-    $ gem install inpost_points_finder
+```sh
+gem install inpost_points_finder
+```
+
+---
 
 ## Usage
 
-### Get all points with specified type
+### Get all points of a given type
 
-Returns array of all points with type 1.
+Returns array of all points with given type (e.g. type 1):
+
 ```ruby
 InpostPointsFinder.get_points(type: 1)
 ```
 
-### Get one point by id
+### Get a single point by ID
 
-Returns data of point with id CSZ01A.
+Returns data of point with id `CSZ01A`:
+
 ```ruby
 InpostPointsFinder.get_point("CSZ01A")
 ```
 
-### Displays select tag with points of specified type as options
+### Render a select tag with points as options
 
-Returns array of all points with type 1.
-```ruby
+In Rails views, renders all points of given type as `<option>` tags:
+
+```erb
 <%= inpost_points_select(1) %>
-
 ```
 
-### Custom configuration
+### Custom API endpoint configuration
 
-If you want to use different endpoint from default ("https://api-pl.easypack24.net/v4/machines") for points API.
+You can change the API base URL (default: `https://api-pl.easypack24.net/v4/machines`):
 
 ```ruby
 InpostPointsFinder.configure do |config|
-  config.endpoint = 'new_endpoint_url'
+  config.endpoint = 'https://custom-api-url.example'
 end
 ```
 
+---
+
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```sh
+bin/setup
+```
+
+to install dependencies. Then run:
+
+```sh
+rspec
+```
+
+to execute the tests.
+
+You can also run:
+
+```sh
+bin/console
+```
+
+for an interactive Ruby prompt with the gem loaded.
+
+To install this gem onto your local machine:
+
+```sh
+bundle exec rake install
+```
+
+To release a new version:  
+Update the version number in `version.rb`, then:
+
+```sh
+bundle exec rake release
+```
+
+---
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/szymoniwacz/inpost_points_finder.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/szymoniwacz/inpost_points_finder](https://github.com/szymoniwacz/inpost_points_finder).
 
+---
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
+This project is open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
